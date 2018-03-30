@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ToDoForm from './Fabia.js';
+import Fabia from './components/Fabia.js';
 
 class App extends Component {
 
