@@ -1,4 +1,4 @@
-/*  This was copied from react-voice-components because create-react-app
+/*  This was copied from npm package react-voice-components because create-react-app
     would not load it as it has and unless one rejects create-react-app there is
     no access to the webpack.config.js.  So this was the solution.
 */
