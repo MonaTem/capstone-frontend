@@ -3,7 +3,7 @@
     no access to the webpack.config.js.  So this was the solution.
 */
 
-
+// eslint-disable-next-line
 import React, { Component } from 'react'
 
 class VoicePlayer extends Component {
