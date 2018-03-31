@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import ReactDOM, {render} from 'react-dom';
 // import PropTypes from 'prop-types';
 import './Fabia.css';
+import VoicePlayer from './VoicePlayer.js';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
@@ -38,7 +39,10 @@ class Fabia extends Component {
 
 
   handleClick(event) {
-
+    <VoicePlayer
+        play
+        text="React voice player demonstration"
+      />
   }
 
 
