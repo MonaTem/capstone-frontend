@@ -19,7 +19,6 @@ class VoicePlayer extends Component {
     this.state = {
       started: false,
       playing: false,
-      ending: false
     }
   }
 
@@ -59,11 +58,6 @@ class VoicePlayer extends Component {
     this.setState({ playing: true })
   }
 
-  // end = () => {
-  //   window.speechSynthesis.end()
-  //   this.setState({ ending: true, playing: false, started: false});
-  // }
-
   componentWillReceiveProps ({ pause }) {
     if (pause && this.state.playing && this.state.started) {
       return this.pause()
@@ -83,20 +77,13 @@ class VoicePlayer extends Component {
       { name: 'start', action: this.props.onStart },
       { name: 'error', action: this.props.onError },
       { name: 'pause', action: this.props.onPause },
-      { name: 'resume', action: this.props.onResume },
-      // { name: 'end', action: this.props.onEnd }
+      { name: 'resume', action: this.props.onResume }
     ]
 
     events.forEach(e => {
       this.speech.addEventListener(e.name, e.action)
     })
 
-   /*
-    this.speech.addEventListener('end', () => {
-      this.setState({ started: false })
-      this.end()
-    })
-    */
 
     if (this.props.play) {
       this.speak()
