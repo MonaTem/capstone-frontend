@@ -9,14 +9,13 @@ class Fabia extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      characters: [],
-      summary: [],
+      character: 'Bear',
       happy: true,
       sad: false,
       dropdownOpen: false
     }
 
-    this.handleChange  = this.handleChange.bind(this);
+    this.select  = this.select.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.toggle = this.toggle.bind(this);
   }
@@ -27,9 +26,16 @@ class Fabia extends Component {
     });
   }
 
-  handleChange(event) {
-
+  select(event) {
+    event.preventDefault();
+    this.setState({
+      character: event.target.innerText,
+      dropdownOpen: !this.state.dropdownOpen
+    });
+    // console.log("new character is " + this.state.character);
   }
+
+
 
   handleClick(event) {
 
@@ -54,17 +60,12 @@ class Fabia extends Component {
            Choose Main Character
           </DropdownToggle>
           <DropdownMenu className="menu">
-            <DropdownItem>Bear</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>Princess</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>Woodcutter</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>Witch</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>Fairy Queen</DropdownItem>
-            <DropdownItem divider />
-          <DropdownItem>Ogre</DropdownItem>
+            <DropdownItem onClick={this.select.bind(this)}>Bear</DropdownItem>
+            <DropdownItem onClick={this.select.bind(this)}>Princess</DropdownItem>
+            <DropdownItem onClick={this.select.bind(this)}>Woodcutter</DropdownItem>
+            <DropdownItem onClick={this.select.bind(this)}>Witch</DropdownItem>
+            <DropdownItem onClick={this.select.bind(this)}>Fairy Queen</DropdownItem>
+            <DropdownItem onClick={this.select.bind(this)}>Ogre</DropdownItem>
          </DropdownMenu>
         </Dropdown>
 </div>
