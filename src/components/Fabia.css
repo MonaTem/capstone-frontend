@@ -1,22 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Bad+Script');
 
+@import url('https://fonts.googleapis.com/css?family=Eagle+Lake');
 
 body {
   text-align: center;
   background-color: #DFD0EA;
-  font-family:
+  font-family: 'Eagle Lake', cursive;
 }
 
-.h1 {
-  height: 150px;
-  padding: 20px;
+.h5 {
   color: #4C166E;
 }
+
 .Fabia {
   margin-top: 50px;
 }
 
 @fontface {
-  font-family: 'Bad Script';
-  src: url('https://fonts.googleapis.com/css?family=Bad+Script')
+font-family: 'Eagle Lake', cursive;
+src: url('https://fonts.googleapis.com/css?family=Eagle+Lake');
 }

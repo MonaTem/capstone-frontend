@@ -27,9 +27,9 @@ class Fabia extends Component {
 
     return (
       <div>
-        <h1 className="heading">
+        <h5 className="h5">
             Hello, My Name is Fabia and I'd Love to Tell You a Fairytale
-        </h1>
+        </h5>
 
         <div className="Fabia">
           <img className="img-fluid" src="/AdobeStock_59629549_Preview.jpeg" alt="Purple Fairy" height="300" width="300"/>
