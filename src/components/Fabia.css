@@ -15,6 +15,20 @@ body {
   margin-top: 50px;
 }
 
+.dropdown {
+  margin-top: 50px;
+  color: #4C166E;
+}
+
+/* .Button {
+  aria-haspop: false;
+  color: light;
+} */
+
+/* .toggle {
+  background-color: white;
+} */
+
 @fontface {
 font-family: 'Eagle Lake', cursive;
 src: url('https://fonts.googleapis.com/css?family=Eagle+Lake');
