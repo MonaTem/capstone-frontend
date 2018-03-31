@@ -19,7 +19,7 @@ class Fabia extends Component {
   }
 
   handleClick(event) {
-    
+
   }
 
 
@@ -32,7 +32,7 @@ class Fabia extends Component {
         </h1>
 
         <div className="Fabia">
-          <img class="img-fluid" src="/public/AdobeStock_59629549_Preview.jpeg" alt="Purple Fairy" height="200" width="100"/>
+          <img className="img-fluid" src="/AdobeStock_59629549_Preview.jpeg" alt="Purple Fairy" height="300" width="300"/>
         </div>
       </div>
     );
