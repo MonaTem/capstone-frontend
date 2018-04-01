@@ -13,13 +13,20 @@ class Fabia extends Component {
       character: 'Bear',
       dropdownOpen: false,
       rSelected: '',
-      voice: null
+      voice: null,
+      stories: ''
     }
 
     this.select  = this.select.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.toggle = this.toggle.bind(this);
   }
+
+  componentDidMount() {
+    fetch('/stories')
+      .then(stories => this.setState({ stories }));
+  }
+
 
     toggle() {
       this.setState({
@@ -46,7 +53,7 @@ class Fabia extends Component {
         rSelected: event.target.innerText,
         voice: (<VoicePlayer
                                play
-                              text="React voice player demonstration"
+                              text={this.state.stories}
                               />)
       });
       // console.log(`rSelected is ${this.state.rSelected}`);
