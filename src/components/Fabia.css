@@ -5,6 +5,7 @@ body {
   text-align: center;
   background-color: #DFD0EA;
   font-family: 'Eagle Lake', cursive;
+  color: #4C166E;
 }
 
 .h5 {
@@ -15,7 +16,17 @@ body {
   margin-top: 50px;
 }
 
-.dropdown {
+.dropit {
+  margin-top: 50px;
+  color: #4C166E;
+
+}
+
+.menu {
+  color: #4C166E;
+}
+
+.btngrp {
   margin-top: 50px;
   color: #4C166E;
 }
