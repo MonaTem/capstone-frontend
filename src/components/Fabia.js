@@ -11,10 +11,9 @@ class Fabia extends Component {
     super(props);
     this.state = {
       character: 'Bear',
-      happy: true,
-      sad: false,
       dropdownOpen: false,
-      rSelected: ''
+      rSelected: '',
+      voice: null
     }
 
     this.select  = this.select.bind(this);
@@ -32,31 +31,35 @@ class Fabia extends Component {
     event.preventDefault();
     this.setState({
       character: event.target.innerText,
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: !this.state.dropdownOpen,
+      voice: null
     });
     // console.log("new character is " + this.state.character);
   }
 
 
 
-  handleClick(rSelected) {
-    this.setState({ rSelected });
+  handleClick(rSelected, event) {
+    this.setState({
+      voice:null
+    })
+    this.setState({ rSelected,
+                    voice: (<VoicePlayer
+                         play
+                        text="React voice player demonstration"
+                        />) });
     }
-
-    // <VoicePlayer
-    //     play
-    //     text="React voice player demonstration"
-    //   />
-
 
 
   render() {
     const white = 'white';
-    const radioSelection = this.state.rSelected;
-    const voice = radioSelection ? (<VoicePlayer
-         play
-        text="React voice player demonstration"
-        />) : null;
+    // const radioSelection = this.state.rSelected;
+    // console.log('radio selection is ' + radioSelection);
+    // const voice = radioSelection ? (<VoicePlayer
+         // play
+        // text="React voice player demonstration"
+        // />) : null;
+    // (voice)  ? console.log ('voice has player') : console.log('voice is null');
 
 
     return (
@@ -95,7 +98,7 @@ class Fabia extends Component {
           <Button color="white" onClick={() => this.handleClick('Sad ending')} active={this.state.rSelected === 'Sad ending'}>Sad ending?</Button>
         </ButtonGroup>
         <p>Selected: {this.state.rSelected}</p>
-       {voice}
+      {this.state.voice}
 </div>
 
     );
