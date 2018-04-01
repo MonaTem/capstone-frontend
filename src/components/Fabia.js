@@ -39,10 +39,11 @@ class Fabia extends Component {
 
 
 
-  handleClick(rSelected, event) {
+  handleClick(rSelected) {
     this.setState({
-      voice:null
-    })
+      voice: null
+    });
+    (this.state.voice) ? console.log('voiceplayer loaded') : console.log('voice is null');
     this.setState({ rSelected,
                     voice: (<VoicePlayer
                          play
