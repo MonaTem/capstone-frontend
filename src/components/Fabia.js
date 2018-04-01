@@ -11,10 +11,14 @@ class Fabia extends Component {
     super(props);
     this.state = {
       character: 'Bear',
+      chars: ['Bear', 'Princess', 'Witch', 'Woodcutter', 'Fairy Queen', 'Ogre'],
       dropdownOpen: false,
       rSelected: '',
       voice: null,
-      stories: ''
+      stories: '',
+      id: 1,
+      api: '/api/stories/1/happy_story',
+      ending: 'happy'
     }
 
     this.select  = this.select.bind(this);
@@ -23,7 +27,9 @@ class Fabia extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/stories')
+    const api = this.state.api;
+    console.log(`URL is ${api}`);
+    fetch(api)
       .then(response => response.text())
       .then(stories => this.setState({ stories }));
   }
@@ -47,11 +53,14 @@ class Fabia extends Component {
 
     handleClick(event) {
       // event.preventDefault();
-      this.setState({
-        voice: null
-      })
+      // this.setState({
+      //   voice: null
+      // })
+      //
       this.setState({
         rSelected: event.target.innerText,
+        id: (this.state.chars.indexOf(this.state.rSelected) + 1),
+        api: '/api/stories/1/happy_story',
         voice: (<VoicePlayer
                                play
                               text={this.state.stories}
