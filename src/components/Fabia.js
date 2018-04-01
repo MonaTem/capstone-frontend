@@ -23,7 +23,8 @@ class Fabia extends Component {
   }
 
   componentDidMount() {
-    fetch('/stories')
+    fetch('/api/stories')
+      .then(response => response.text())
       .then(stories => this.setState({ stories }));
   }
 
