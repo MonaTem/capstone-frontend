@@ -37,21 +37,8 @@ class Fabia extends Component {
     // console.log("new character is " + this.state.character);
     }
 
-
-  // handleClick(rSelected) {
-  //   this.setState({
-  //     voice: null
-  //   });
-  //   (this.state.voice) ? console.log('voiceplayer loaded') : console.log('voice is null');
-  //   this.setState({ rSelected,
-  //                   voice: (<VoicePlayer
-  //                        play
-  //                       text="React voice player demonstration"
-  //                       />) });
-  //   }
-
     handleClick(event) {
-      event.preventDefault();
+      // event.preventDefault();
       this.setState({
         voice: null
       })
@@ -109,8 +96,6 @@ class Fabia extends Component {
         <br>
         </br>
         <ButtonGroup className="btngrp">
-          {/* <Button color="white" onClick={() => this.handleClick('Happy ending')} active={this.state.rSelected === 'Happy ending'}>Happy ending?</Button>
-          <Button color="white" onClick={() => this.handleClick('Sad ending')} active={this.state.rSelected === 'Sad ending'}>Sad ending?</Button> */}
           <Button color="white" onClick={this.handleClick.bind(this)}>Happy ending?</Button>
           <Button color="white" onClick={this.handleClick.bind(this)}>Sad ending?</Button>
         </ButtonGroup>
