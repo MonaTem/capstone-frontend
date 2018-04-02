@@ -17,7 +17,7 @@ class Fabia extends Component {
       stories: '',
       id: 1,
       api: '/api/stories/1/happy_story',
-      ending: 'Happy'
+      ending: ''
     }
 
     this.select  = this.select.bind(this);
@@ -25,13 +25,13 @@ class Fabia extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  componentDidMount() {
-    const api = this.state.api;
-    console.log(`URL is ${api}`);
-    fetch(api)
-      .then(response => response.text())
-      .then(stories => this.setState({ stories }));
-  }
+  // componentDidMount() {
+  //   const api = this.state.api;
+  //   console.log(`URL is ${api}`);
+  //   fetch(api)
+  //     .then(response => response.text())
+  //     .then(stories => this.setState({ stories }));
+  // }
 
     toggle() {
       this.setState({
@@ -50,23 +50,32 @@ class Fabia extends Component {
     }
 
     handleClick(event) {
+      // console.log("rSelected is " + this.state.rSelected);
+      // let selectEnd = event.target.innerText;
+      // console.log('selected ending is ' + selectEnd);
 
-      let api = this.state.api;
-      console.log("ending is " + this.state.ending);
-      this.state.ending === 'Sad' ? (api = '/api/stories/1/sad_story') : (api = '/api/stories/1/happy_story');
-      fetch(api)
-        .then(response => response.text())
-        .then(stories => this.setState({ stories }));
+      //let api = this.state.api;
       this.setState({
         rSelected: event.target.innerText,
+        // rSelected: 'Sad ending?',
         id: (this.state.chars.indexOf(this.state.rSelected) + 1),
-        ending: this.state.rSelected.substring(0,this.state.rSelected.length-8),
-        api: api,
-        voice: (<VoicePlayer
-                               play
-                               text={this.state.stories}
-                              />)
+        ending: this.state.rSelected.toLowerCase().substring(0,this.state.rSelected.length-8),
+        api: `/api/stories/1/${this.state.ending}_story`
       });
+      console.log("rSelected is " + this.state.rSelected);
+      console.log("state ending is " + this.state.ending);
+      console.log("state api is " + this.state.api);
+      let api = this.state.api;
+      // this.state.ending === 'Sad' || 'sad' ? (api = '/api/stories/1/sad_story') : (api = '/api/stories/1/happy_story');
+      console.log("api is " + api);
+      fetch(api)
+        .then(response => response.text())
+        .then(stories => this.setState({ stories,
+                                         voice: (<VoicePlayer
+                                                  play
+                                                  text={this.state.stories}
+                                                 />)
+                                        }));
 
     }
 
