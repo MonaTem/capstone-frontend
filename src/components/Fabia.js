@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import ReactDOM, {render} from 'react-dom';
-// import PropTypes from 'prop-types';
 import './Fabia.css';
 import VoicePlayer from './VoicePlayer.js';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, ButtonGroup } from 'reactstrap';
+
 
 
 class Fabia extends Component {
@@ -18,7 +17,7 @@ class Fabia extends Component {
       stories: '',
       id: 1,
       api: '/api/stories/1/happy_story',
-      ending: 'happy'
+      ending: 'Happy'
     }
 
     this.select  = this.select.bind(this);
@@ -34,7 +33,6 @@ class Fabia extends Component {
       .then(stories => this.setState({ stories }));
   }
 
-
     toggle() {
       this.setState({
         dropdownOpen: !this.state.dropdownOpen
@@ -48,37 +46,33 @@ class Fabia extends Component {
         dropdownOpen: !this.state.dropdownOpen,
         voice: null
       });
-    // console.log("new character is " + this.state.character);
+
     }
 
     handleClick(event) {
-      // event.preventDefault();
-      // this.setState({
-      //   voice: null
-      // })
-      //
+
+      let api = this.state.api;
+      console.log("ending is " + this.state.ending);
+      this.state.ending === 'Sad' ? (api = '/api/stories/1/sad_story') : (api = '/api/stories/1/happy_story');
+      fetch(api)
+        .then(response => response.text())
+        .then(stories => this.setState({ stories }));
       this.setState({
         rSelected: event.target.innerText,
         id: (this.state.chars.indexOf(this.state.rSelected) + 1),
-        api: '/api/stories/1/happy_story',
+        ending: this.state.rSelected.substring(0,this.state.rSelected.length-8),
+        api: api,
         voice: (<VoicePlayer
                                play
-                              text={this.state.stories}
+                               text={this.state.stories}
                               />)
       });
-      // console.log(`rSelected is ${this.state.rSelected}`);
+
     }
 
 
   render() {
     const white = 'white';
-    // const radioSelection = this.state.rSelected;
-    // console.log('radio selection is ' + radioSelection);
-    // const voice = radioSelection ? (<VoicePlayer
-         // play
-        // text="React voice player demonstration"
-        // />) : null;
-    // (voice)  ? console.log ('voice has player') : console.log('voice is null');
 
 
     return (
