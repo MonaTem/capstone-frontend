@@ -9,9 +9,9 @@ class Fabia extends Component {
       dropdownOpen: false,
       voice: null,
       stories: '',
-      api: '/api/stories/1/happy_story',
+      api: '',
       selected: "Bear",
-      finish: 'happy'
+      finish: ''
     }
 
     this.handleSelect  = this.handleSelect.bind(this);
@@ -34,13 +34,15 @@ class Fabia extends Component {
       event.preventDefault();
       this.setState({
         ending: ending,
-        finish: ending.toLowerCase().substring(0,ending.length-8)
+        finish: ending.toLowerCase().substring(0,ending.length-7),
         // id: (this.state.chars.indexOf(this.state.rSelected) + 1),
-        // api: `/api/stories/1/${this.state.ending}_story`
+        api: `/api/stories/1/${this.state.finish}_story`
         // api: `/api/stories/1/${this.state.ending}_story`
       });
-     // const end = this.state.end;
-     // console.log("end is ", end);
+     const finish = this.state.finish;
+     console.log("finish is ", finish);
+     const api = this.state.api;
+     console.log("api is ", api);
 
     }
 
