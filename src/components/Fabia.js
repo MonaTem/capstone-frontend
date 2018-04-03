@@ -23,29 +23,62 @@ class Fabia extends Component {
     handleSelect(event) {
       const name = event.target.name;
       const value= event.target.value;
+      let id = '';
+      switch (value) {
+        case 'Bear':
+           id = 1;
+           break;
+        case 'Princess':
+           id = 2;
+           break;
+        case 'Witch' :
+           id = 3;
+           break;
+        case 'Woodcutter' :
+           id = 4;
+           break;
+        case 'Fairy' :
+          id = 5;
+          break;
+        case 'Ogre' :
+          id = 6;
+          break;
+        default:
+          id = 1;
+      }
+
       this.setState({
         [name]: value,
         dropdownOpen: !this.state.dropdownOpen,
+        id: id,
+        voice: null
       });
       console.log('name is ', name, 'value is ', value);
     }
 
     handleClick(ending, event) {
       event.preventDefault();
-      const finish = this.state.finish;
+      const finish = ending.toLowerCase().substring(0,ending.length-7);
+      let api = `/api/stories/1/${finish}_story`;
+
       this.setState({
-        finish: ending.toLowerCase().substring(0,ending.length-7),
+        finish: finish,
         ending: ending,
-        api: `/api/stories/1/${finish}_story`
-        // id: (this.state.chars.indexOf(this.state.rSelected) + 1),
-
+        api: api
       });
-     const endingNow = this.state.ending;
-     console.log("now after click ending is ", endingNow);
 
+     console.log("now after click ending is ", ending);
      console.log("finish is ", finish);
-     const api = this.state.api;
      console.log("api is ", api);
+
+     fetch(api)
+        .then(response => response.text())
+        .then(stories => this.setState({ stories,
+                                         voice: (<VoicePlayer
+                                                  play
+                                                  text={this.state.stories}
+                                                 />)
+                                        }));
 
     }
 
