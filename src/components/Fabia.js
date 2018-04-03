@@ -11,6 +11,7 @@ class Fabia extends Component {
       stories: '',
       api: '/api/stories/1/happy_story',
       selected: "Bear",
+      finish: 'happy'
     }
 
     this.handleSelect  = this.handleSelect.bind(this);
@@ -26,24 +27,28 @@ class Fabia extends Component {
         [name]: value,
         dropdownOpen: !this.state.dropdownOpen,
       });
-
+      console.log('name is ', name, 'value is ', value);
     }
 
     handleClick(ending, event) {
       event.preventDefault();
       this.setState({
         ending: ending,
+        finish: ending.toLowerCase().substring(0,ending.length-8)
+        // id: (this.state.chars.indexOf(this.state.rSelected) + 1),
+        // api: `/api/stories/1/${this.state.ending}_story`
         // api: `/api/stories/1/${this.state.ending}_story`
       });
+     // const end = this.state.end;
+     // console.log("end is ", end);
 
     }
 
 
   render() {
-    const white = 'white';
     const ending = this.state.ending;
     const character = this.state.selected;
-    console.log("ending is: ", ending, "character is: ", character)
+    console.log("ending is: ", ending, "character is: ", character);
 
     return (
       <div>
@@ -69,10 +74,11 @@ class Fabia extends Component {
         </label>
 
         <br/><br/>
-          <button color="white" onClick={this.handleClick.bind(this, "Happy Ending")}>Happy ending?</button>
+          <button name="ending" color="white" value="happy"  onClick={this.handleClick.bind(this, "Happy Ending")}>Happy ending?</button>
           <button name="ending" value="sad" color="white" onClick={this.handleClick.bind(this, "Sad Ending")}>Sad ending?</button>
       </form>
       <p>Selected: {character}, {ending}</p>
+      {this.state.voice}
  </div>
     );
   }
