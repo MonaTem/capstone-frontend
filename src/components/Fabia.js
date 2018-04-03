@@ -58,18 +58,17 @@ class Fabia extends Component {
 
     handleClick(ending, event) {
       event.preventDefault();
-      const finish = ending.toLowerCase().substring(0,ending.length-7);
-      let api = `/api/stories/1/${finish}_story`;
-
       this.setState({
-        finish: finish,
         ending: ending,
-        api: api
+        // api: `/api/stories/1/${this.state.ending}_story`
       });
 
-     console.log("now after click ending is ", ending);
-     console.log("finish is ", finish);
-     console.log("api is ", api);
+    var array = ["Bear", "Princess", "Witch", "Woodcutter", "Fairy", "Ogre"];
+    const end = (ending === "Happy Ending") ? "happy_story" : "sad_story";
+    const characterIndex = array.indexOf(this.state.selected) + 1;
+    console.log("end: ", end, "characterInd:", characterIndex);
+    const url = "/api/stories/" + characterIndex + "/" + end
+    console.log("url", url)
 
      fetch(api)
         .then(response => response.text())
