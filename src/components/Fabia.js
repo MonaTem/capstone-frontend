@@ -32,14 +32,17 @@ class Fabia extends Component {
 
     handleClick(ending, event) {
       event.preventDefault();
+      const finish = this.state.finish;
       this.setState({
-        ending: ending,
         finish: ending.toLowerCase().substring(0,ending.length-7),
+        ending: ending,
+        api: `/api/stories/1/${finish}_story`
         // id: (this.state.chars.indexOf(this.state.rSelected) + 1),
-        api: `/api/stories/1/${this.state.finish}_story`
-        // api: `/api/stories/1/${this.state.ending}_story`
+
       });
-     const finish = this.state.finish;
+     const endingNow = this.state.ending;
+     console.log("now after click ending is ", endingNow);
+
      console.log("finish is ", finish);
      const api = this.state.api;
      console.log("api is ", api);
