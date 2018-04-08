@@ -75,11 +75,12 @@ class Fabia extends Component {
      fetch(url)
         .then(response => response.text())
         .then(stories => this.setState({ stories,
-                                         voice: (<VoicePlayer
+                                         voice: <VoicePlayer
                                                   play
                                                   text={(stories.substring(2,7) === 'happy') ? stories.substring(15) : stories.substring(14)}
                                                  />)
                                         }));
+     console.log('stories are ', stories);
 
     }
 
