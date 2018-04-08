@@ -67,17 +67,18 @@ class Fabia extends Component {
     const end = (ending === "Happy Ending") ? "happy_story" : "sad_story";
     const characterIndex = array.indexOf(this.state.selected) + 1;
     console.log("end: ", end, "characterInd:", characterIndex);
-    const url = "/api/stories/" + characterIndex + "/" + end
-    console.log("url", url)
-    const stories = '';
+    // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
+    const url = "/api/stories/" + end + "/" + characterIndex;
+    console.log("url", url);
+    // const stories = '';
 
      fetch(url)
         .then(response => response.text())
         .then(stories => this.setState({ stories,
                                          voice: <VoicePlayer
                                                   play
-                                                  text={stories}
-                                                 />
+                                                  text={(stories.substring(2,7) === 'happy') ? stories.substring(15) : stories.substring(14)}
+                                                 />)
                                         }));
      console.log('stories are ', stories);
 
