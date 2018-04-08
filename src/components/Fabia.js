@@ -75,7 +75,7 @@ class Fabia extends Component {
         .then(stories => this.setState({ stories,
                                          voice: (<VoicePlayer
                                                   play
-                                                  text={this.state.stories}
+                                                  text={stories}
                                                  />)
                                         }));
 
