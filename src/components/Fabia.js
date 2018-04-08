@@ -69,14 +69,15 @@ class Fabia extends Component {
     console.log("end: ", end, "characterInd:", characterIndex);
     // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
     const url = "/api/stories/" + end + "/" + characterIndex;
-    console.log("url", url)
+    console.log("url", url);
+    // const stories = '';
 
      fetch(url)
         .then(response => response.text())
         .then(stories => this.setState({ stories,
                                          voice: (<VoicePlayer
                                                   play
-                                                  text={stories}
+                                                  text={(stories.substring(2,7) === 'happy') ? stories.substring(15) : stories.substring(14)}
                                                  />)
                                         }));
 
