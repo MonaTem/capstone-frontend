@@ -69,15 +69,17 @@ class Fabia extends Component {
     console.log("end: ", end, "characterInd:", characterIndex);
     const url = "/api/stories/" + characterIndex + "/" + end
     console.log("url", url)
+    const stories = '';
 
      fetch(url)
         .then(response => response.text())
         .then(stories => this.setState({ stories,
-                                         voice: (<VoicePlayer
+                                         voice: <VoicePlayer
                                                   play
-                                                  text={this.state.stories}
-                                                 />)
+                                                  text={stories}
+                                                 />
                                         }));
+     console.log('stories are ', stories);
 
     }
 
