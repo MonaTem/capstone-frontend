@@ -70,7 +70,7 @@ class Fabia extends Component {
     // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
     const url = "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
-    // const stories = '';
+    const stories = '';
 
      fetch(url)
         .then(response => response.text())
@@ -78,7 +78,7 @@ class Fabia extends Component {
                                          voice: <VoicePlayer
                                                   play
                                                   text={(stories.substring(2,7) === 'happy') ? stories.substring(15) : stories.substring(14)}
-                                                 />)
+                                                 />
                                         }));
      console.log('stories are ', stories);
 
