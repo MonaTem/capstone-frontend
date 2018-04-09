@@ -68,12 +68,13 @@ class Fabia extends Component {
     const characterIndex = array.indexOf(this.state.selected) + 1;
     console.log("end: ", end, "characterInd:", characterIndex);
     // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
-    const HerokuURL = "https://fabias-fairytales-backend.herokuapp.com";
-    const url = HerokuURL + "/api/stories/" + end + "/" + characterIndex;
+    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
+    const url = HerokuUrl + "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
     const stories = '';
 
-     fetch(url)
+     fetch(proxyUrl + url)
         .then(response => response.text())
         .then(stories => this.setState({ stories,
                                          voice: <VoicePlayer
