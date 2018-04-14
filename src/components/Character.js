@@ -10,7 +10,7 @@ const Character = (props) => {
         </h5>
 
         <div className="Character">
-             <img className="img-fluid" src="{ props.photo }" alt="{ props.character }" height="300" width="300"/>
+             <img className="img-fluid" src={props.photo} alt={props.character} height="300" width="300"/>
         </div>
      </div>
   );

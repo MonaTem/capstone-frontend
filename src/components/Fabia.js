@@ -167,7 +167,7 @@ class Fabia extends Component {
 
   render() {
     const character = this.state.selected;
-    const photo = "PurpleBear.jpg";
+    const photo = "/PurpleBear.jpeg";
     // console.log("ending is: ", ending, "character is: ", character);
     return (
 
