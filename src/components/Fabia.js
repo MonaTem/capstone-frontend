@@ -128,6 +128,9 @@ class Fabia extends Component {
       case "Princess":
         photo = "/Princess.jpg";
         break;
+      case "Witch":
+         photo = "/Purple_Witch_PNG_Clipart_Image.png";
+         break;  
       default:
         photo = "/AdobeStock_59629549_Preview.jpeg";
     }
