@@ -10,7 +10,7 @@ class Fabia extends Component {
       voice: null,
       stories: '',
       api: '',
-      selected: "Bear",
+      selected: "",
       finish: ''
     }
 
@@ -102,6 +102,21 @@ class Fabia extends Component {
                </div>
             </div>
          );
+
+         } else if (character === 'Princess') {
+            return (
+                <div>
+                  <h5 className="h5">
+                      I'm the Princess and This is My Story
+                  </h5>
+
+                  <div className="Princess">
+                       <img className="img-fluid" src="Princess.jpg" alt="Princess in Forest" height="400" width="400"/>
+                  </div>
+               </div>
+            );
+
+
 
        } else {
           return (
