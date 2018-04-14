@@ -11,13 +11,12 @@ class Fabia extends Component {
       voice: null,
       stories: '',
       api: '',
-      selected: "",
+      selected: "Fabia",
       finish: ''
     }
 
     this.handleSelect  = this.handleSelect.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.renderCharacter = this.renderCharacter.bind(this);
     this.renderForm = this.renderForm.bind(this);
 
   }
@@ -88,52 +87,6 @@ class Fabia extends Component {
 
     }
 
-
-    renderCharacter() {
-      const character = this.state.selected;
-      if (character === 'Princess') {
-         // return (
-         //     <div>
-         //       <h5 className="h5">
-         //           I'm the Bear and This is My Story
-         //       </h5>
-         //
-         //       <div className="Bear">
-         //            <img className="img-fluid" src="PurpleBear.jpeg" alt="Purple Bear" height="300" width="300"/>
-         //       </div>
-         //    </div>
-         // );
-         //
-         // } else if (character === 'Princess') {
-            return (
-                <div>
-                  <h5 className="h5">
-                      I'm the Princess and This is My Story
-                  </h5>
-
-                  <div className="Princess">
-                       <img className="img-fluid" src="Princess.jpg" alt="Princess in Forest" height="400" width="400"/>
-                  </div>
-               </div>
-            );
-
-
-
-       } else if (character !== "Bear") {
-          return (
-            <div>
-              <h5 className="h5">
-                  Hello, My Name is Fabia and I would Love to Tell You a Fairytale
-              </h5>
-
-              <div className="Fabia">
-                   <img className="img-fluid" src="/AdobeStock_59629549_Preview.jpeg" alt="Purple Fairy" height="300" width="300"/>
-              </div>
-            </div>
-         );
-       }
-  }
-
    renderForm() {
 
      const ending = this.state.ending;
@@ -167,13 +120,23 @@ class Fabia extends Component {
 
   render() {
     const character = this.state.selected;
-    const photo = "/PurpleBear.jpeg";
+    var photo = "/AdobeStock_59629549_Preview.jpeg";
+    switch(character) {
+      case "Bear":
+        photo = "/PurpleBear.jpeg";
+        break;
+      case "Princess":
+        photo = "/Princess.jpg";
+        break;
+      default:
+        photo = "/AdobeStock_59629549_Preview.jpeg";
+    }
+
     // console.log("ending is: ", ending, "character is: ", character);
     return (
 
       <div>
-       {(character === "Bear") && <Character character={character} photo={photo} /> }
-       {this.renderCharacter()};
+       <Character character={character} photo={photo} />
        {this.renderForm()}
        {this.state.voice}
       </div>

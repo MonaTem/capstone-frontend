@@ -3,6 +3,21 @@ import './Fabia.css';
 
 
 const Character = (props) => {
+  if (props.character === "Fabia") {
+    return (
+    <div>
+           <h5 className="h5">
+                    Hello, My Name is Fabia and I would Love to Tell You a Fairytale
+               </h5>
+
+               <div className="Fabia">
+                      <img className="img-fluid" src={props.photo} alt={props.character} height="300" width="300"/>
+               </div>
+             </div>
+    );
+
+  } else
+
   return (
       <div>
         <h5 className="h5">
