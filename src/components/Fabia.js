@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Fabia.css';
 import VoicePlayer from './VoicePlayer.js';
+import Character from './Character.js';
 
 class Fabia extends Component {
   constructor(props) {
@@ -90,20 +91,20 @@ class Fabia extends Component {
 
     renderCharacter() {
       const character = this.state.selected;
-      if (character === 'Bear') {
-         return (
-             <div>
-               <h5 className="h5">
-                   I'm the Bear and This is My Story
-               </h5>
-
-               <div className="Bear">
-                    <img className="img-fluid" src="PurpleBear.jpeg" alt="Purple Bear" height="300" width="300"/>
-               </div>
-            </div>
-         );
-
-         } else if (character === 'Princess') {
+      if (character === 'Princess') {
+         // return (
+         //     <div>
+         //       <h5 className="h5">
+         //           I'm the Bear and This is My Story
+         //       </h5>
+         //
+         //       <div className="Bear">
+         //            <img className="img-fluid" src="PurpleBear.jpeg" alt="Purple Bear" height="300" width="300"/>
+         //       </div>
+         //    </div>
+         // );
+         //
+         // } else if (character === 'Princess') {
             return (
                 <div>
                   <h5 className="h5">
@@ -118,7 +119,7 @@ class Fabia extends Component {
 
 
 
-       } else {
+       } else if (character !== "Bear") {
           return (
             <div>
               <h5 className="h5">
@@ -165,11 +166,14 @@ class Fabia extends Component {
 
 
   render() {
-
+    const character = this.state.selected;
+    const photo = "PurpleBear.jpg";
     // console.log("ending is: ", ending, "character is: ", character);
     return (
+
       <div>
-       {this.renderCharacter()}
+       {(character === "Bear") && <Character character={character} photo={photo} /> }
+       {this.renderCharacter()};
        {this.renderForm()}
        {this.state.voice}
       </div>
