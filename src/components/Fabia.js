@@ -12,7 +12,8 @@ class Fabia extends Component {
       stories: '',
       api: '',
       selected: "Fabia",
-      finish: ''
+      finish: '',
+      id:  7
     }
 
     this.handleSelect  = this.handleSelect.bind(this);
@@ -47,10 +48,10 @@ class Fabia extends Component {
           id = 6;
           break;
         case 'Fabia' :
-          id = 0;
+          id = 7;
           break;
         default:
-          id = 0;
+          id = 7;
       }
 
       this.setState({
@@ -69,12 +70,13 @@ class Fabia extends Component {
         // api: `/api/stories/1/${this.state.ending}_story`
       });
 
-    var array = ["Bear", "Princess", "Witch", "Woodcutter", "Fairy", "Ogre"];
+    var array = ["Bear", "Princess", "Witch", "Woodcutter", "Fairy", "Ogre", "Fabia"];
     const end = (ending === "Happy Ending") ? "happy_story" : "sad_story";
     const characterIndex = array.indexOf(this.state.selected) + 1;
     console.log("end: ", end, "characterInd:", characterIndex);
     // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
-    const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
+    //const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
+    const HerokuUrl = "http://localhost:8000";
     const url = HerokuUrl + "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
     const stories = '';
@@ -103,12 +105,14 @@ class Fabia extends Component {
          Choose Main Character:
         <br/>
         <select name="selected" value={this.state.value} onChange={this.handleSelect}>
+         <option value=""> </option>  
          <option value="Bear">Bear</option>
          <option value="Princess">Princess</option>
          <option value="Witch">Witch</option>
          <option value="Woodcutter">Woodcutter</option>
          <option value="Fairy">Fairy</option>
          <option value="Ogre">Ogre</option>
+         <option value="Fabia">Fabia</option>
         </select>
         </label>
 
@@ -140,6 +144,9 @@ class Fabia extends Component {
          break;
       case "Woodcutter":
          photo = "/Woodcutter.jpg";
+         break;
+      case "Fabia":
+         photo = "/Fabia.jpeg";
          break;
       default:
         photo = "/Fabia.jpeg";
