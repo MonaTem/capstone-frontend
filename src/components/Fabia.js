@@ -12,7 +12,8 @@ class Fabia extends Component {
       stories: '',
       api: '',
       selected: "Fabia",
-      finish: ''
+      finish: '',
+      id:  7
     }
 
     this.handleSelect  = this.handleSelect.bind(this);
@@ -25,6 +26,7 @@ class Fabia extends Component {
     handleSelect(event) {
       const name = event.target.name;
       const value= event.target.value;
+      console.log(`value is ${value}`);
       let id = '';
       switch (value) {
         case 'Bear':
@@ -68,12 +70,13 @@ class Fabia extends Component {
         // api: `/api/stories/1/${this.state.ending}_story`
       });
 
-    var array = ["Bear", "Princess", "Witch", "Woodcutter", "Fairy", "Ogre"];
+    var array = ["Bear", "Princess", "Witch", "Woodcutter", "Fairy", "Ogre", "Fabia"];
     const end = (ending === "Happy Ending") ? "happy_story" : "sad_story";
     const characterIndex = array.indexOf(this.state.selected) + 1;
     console.log("end: ", end, "characterInd:", characterIndex);
     // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
-    const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
+    //const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
+    const HerokuUrl = "http://localhost:8000";
     const url = HerokuUrl + "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
     const stories = '';
@@ -102,12 +105,14 @@ class Fabia extends Component {
          Choose Main Character:
         <br/>
         <select name="selected" value={this.state.value} onChange={this.handleSelect}>
+         <option value=""> </option>  
          <option value="Bear">Bear</option>
          <option value="Princess">Princess</option>
          <option value="Witch">Witch</option>
          <option value="Woodcutter">Woodcutter</option>
          <option value="Fairy">Fairy</option>
          <option value="Ogre">Ogre</option>
+         <option value="Fabia">Fabia</option>
         </select>
         </label>
 
@@ -123,7 +128,7 @@ class Fabia extends Component {
 
   render() {
     const character = this.state.selected;
-    var photo = "/AdobeStock_59629549_Preview.jpeg";
+    var photo = "/Fabia.jpeg";
     switch(character) {
       case "Bear":
         photo = "/PurpleBear.jpeg";
@@ -139,11 +144,14 @@ class Fabia extends Component {
          break;
       case "Woodcutter":
          photo = "/Woodcutter.jpg";
-         break;   
+         break;
+      case "Fabia":
+         photo = "/Fabia.jpeg";
+         break;
       default:
-        photo = "/AdobeStock_59629549_Preview.jpeg";
+        photo = "/Fabia.jpeg";
     }
-    console.log(`photo is ${photo}`);
+    //console.log(`photo is ${photo}`);
 
     // console.log("ending is: ", ending, "character is: ", character);
     return (
