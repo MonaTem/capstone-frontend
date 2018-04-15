@@ -45,8 +45,11 @@ class Fabia extends Component {
         case 'Ogre' :
           id = 6;
           break;
+        case 'Fabia' :
+          id = 7;
+          break;
         default:
-          id = 1;
+          id = 7;
       }
 
       this.setState({
@@ -134,9 +137,13 @@ class Fabia extends Component {
       case "Ogre":
          photo = "/Purple_Ogre.jpg";
          break;
+      case "Woodcutter":
+         photo = "/Woodcutter.jpg";
+         break;   
       default:
         photo = "/AdobeStock_59629549_Preview.jpeg";
     }
+    console.log(`photo is ${photo}`);
 
     // console.log("ending is: ", ending, "character is: ", character);
     return (
