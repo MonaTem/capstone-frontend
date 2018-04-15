@@ -25,6 +25,7 @@ class Fabia extends Component {
     handleSelect(event) {
       const name = event.target.name;
       const value= event.target.value;
+      console.log(`value is ${value}`);
       let id = '';
       switch (value) {
         case 'Bear':
@@ -46,10 +47,10 @@ class Fabia extends Component {
           id = 6;
           break;
         case 'Fabia' :
-          id = 7;
+          id = 0;
           break;
         default:
-          id = 7;
+          id = 0;
       }
 
       this.setState({
@@ -123,7 +124,7 @@ class Fabia extends Component {
 
   render() {
     const character = this.state.selected;
-    var photo = "/AdobeStock_59629549_Preview.jpeg";
+    var photo = "/Fabia.jpeg";
     switch(character) {
       case "Bear":
         photo = "/PurpleBear.jpeg";
@@ -139,11 +140,11 @@ class Fabia extends Component {
          break;
       case "Woodcutter":
          photo = "/Woodcutter.jpg";
-         break;   
+         break;
       default:
-        photo = "/AdobeStock_59629549_Preview.jpeg";
+        photo = "/Fabia.jpeg";
     }
-    console.log(`photo is ${photo}`);
+    //console.log(`photo is ${photo}`);
 
     // console.log("ending is: ", ending, "character is: ", character);
     return (
