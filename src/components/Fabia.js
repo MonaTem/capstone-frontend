@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Fabia.css';
 import VoicePlayer from './VoicePlayer.js';
+import Character from './Character.js';
 
 class Fabia extends Component {
   constructor(props) {
@@ -10,12 +11,13 @@ class Fabia extends Component {
       voice: null,
       stories: '',
       api: '',
-      selected: "Bear",
+      selected: "Fabia",
       finish: ''
     }
 
     this.handleSelect  = this.handleSelect.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.renderForm = this.renderForm.bind(this);
 
   }
 
@@ -43,8 +45,11 @@ class Fabia extends Component {
         case 'Ogre' :
           id = 6;
           break;
+        case 'Fabia' :
+          id = 7;
+          break;
         default:
-          id = 1;
+          id = 7;
       }
 
       this.setState({
@@ -85,42 +90,69 @@ class Fabia extends Component {
 
     }
 
+   renderForm() {
 
-  render() {
-    const ending = this.state.ending;
-    const character = this.state.selected;
-    console.log("ending is: ", ending, "character is: ", character);
+     const ending = this.state.ending;
+     const character = this.state.selected;
 
-    return (
+     return (
       <div>
-        <h5 className="h5">
-            Hello, My Name is Fabia and I would Love to Tell You a Fairytale
-        </h5>
-
-        <div className="Fabia">
-          <img className="img-fluid" src="/AdobeStock_59629549_Preview.jpeg" alt="Purple Fairy" height="300" width="300"/>
-        </div>
-        <form onSubmit={this.handleClick}>
+       <form onSubmit={this.handleClick}>
         <label>
-           Choose Main Character:
-           <br/>
-           <select name="selected" value={this.state.value} onChange={this.handleSelect}>
-             <option value="Bear">Bear</option>
-             <option value="Princess">Princess</option>
-             <option value="Witch">Witch</option>
-             <option value="Woodcutter">Woodcutter</option>
-             <option value="Fairy">Fairy</option>
-             <option value="Ogre">Ogre</option>
-           </select>
+         Choose Main Character:
+        <br/>
+        <select name="selected" value={this.state.value} onChange={this.handleSelect}>
+         <option value="Bear">Bear</option>
+         <option value="Princess">Princess</option>
+         <option value="Witch">Witch</option>
+         <option value="Woodcutter">Woodcutter</option>
+         <option value="Fairy">Fairy</option>
+         <option value="Ogre">Ogre</option>
+        </select>
         </label>
 
         <br/><br/>
-          <button name="ending" color="white" value="happy"  onClick={this.handleClick.bind(this, "Happy Ending")}>Happy ending?</button>
-          <button name="ending" value="sad" color="white" onClick={this.handleClick.bind(this, "Sad Ending")}>Sad ending?</button>
-      </form>
-      <p>Selected: {character}, {ending}</p>
-      {this.state.voice}
- </div>
+         <button name="ending" color="white" value="happy"  onClick={this.handleClick.bind(this, "Happy Ending")}>Happy ending?</button>
+         <button name="ending" value="sad" color="white" onClick={this.handleClick.bind(this, "Sad Ending")}>Sad ending?</button>
+       </form>
+       <p>Selected: {character}, {ending}</p>
+      </div>
+    );
+   }
+
+
+  render() {
+    const character = this.state.selected;
+    var photo = "/AdobeStock_59629549_Preview.jpeg";
+    switch(character) {
+      case "Bear":
+        photo = "/PurpleBear.jpeg";
+        break;
+      case "Princess":
+        photo = "/Princess.jpg";
+        break;
+      case "Witch":
+         photo = "/Purple_Witch_PNG_Clipart_Image.png";
+         break;
+      case "Ogre":
+         photo = "/Purple_Ogre.jpg";
+         break;
+      case "Woodcutter":
+         photo = "/Woodcutter.jpg";
+         break;   
+      default:
+        photo = "/AdobeStock_59629549_Preview.jpeg";
+    }
+    console.log(`photo is ${photo}`);
+
+    // console.log("ending is: ", ending, "character is: ", character);
+    return (
+
+      <div>
+       <Character character={character} photo={photo} />
+       {this.renderForm()}
+       {this.state.voice}
+      </div>
     );
   }
 }

@@ -16,6 +16,10 @@ body {
   margin-top: 50px;
 }
 
+.Character {
+  margin-top: 50px;
+}
+
 .dropit {
   margin-top: 50px;
   color: #4C166E;
@@ -28,6 +32,14 @@ body {
 
 .btngrp {
   margin-top: 50px;
+  color: #4C166E;
+}
+
+button {
+  color: #4C166E;
+}
+
+select {
   color: #4C166E;
 }
 
