@@ -11,7 +11,7 @@ class Fabia extends Component {
       voice: null,
       stories: '',
       api: '',
-      selected: "Fabia",
+      selected: "",
       finish: '',
       id:  7
     }
@@ -78,7 +78,7 @@ class Fabia extends Component {
     // This is production url for fetch---comment out in development
     const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
     // This is development url for fetch--comment out for production
-    //const HerokuUrl = "http://localhost:8000";
+    // const HerokuUrl = "http://localhost:8000";
     const url = HerokuUrl + "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
     const stories = '';
@@ -122,7 +122,7 @@ class Fabia extends Component {
          <button name="ending" color="white" value="happy"  onClick={this.handleClick.bind(this, "Happy Ending")}>Happy ending?</button>
          <button name="ending" value="sad" color="white" onClick={this.handleClick.bind(this, "Sad Ending")}>Sad ending?</button>
        </form>
-       <p>Selected: {character}, {ending}</p>
+       <p>Selected: {character} {" "} {ending}</p>
       </div>
     );
    }
