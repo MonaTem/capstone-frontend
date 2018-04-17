@@ -11,7 +11,7 @@ class Fabia extends Component {
       voice: null,
       stories: '',
       api: '',
-      selected: "",
+      selected: "Fabia",
       finish: '',
       id:  7
     }
@@ -76,9 +76,9 @@ class Fabia extends Component {
     console.log("end: ", end, "characterInd:", characterIndex);
     // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
     // This is production url for fetch---comment out in development
-    const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
+    // const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
     // This is development url for fetch--comment out for production
-    // const HerokuUrl = "http://localhost:8000";
+    const HerokuUrl = "http://localhost:8000";
     const url = HerokuUrl + "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
     //const stories = '';
@@ -147,6 +147,9 @@ class Fabia extends Component {
       case "Woodcutter":
          photo = "/Woodcutter.jpg";
          break;
+      case "Fairy":
+          photo = "Fabia.jpeg";
+          break;
       case "Fabia":
          photo = "/Fabia.jpeg";
          break;
