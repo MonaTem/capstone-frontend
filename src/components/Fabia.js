@@ -76,12 +76,12 @@ class Fabia extends Component {
     console.log("end: ", end, "characterInd:", characterIndex);
     // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
     // This is production url for fetch---comment out in development
-    const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
+    // const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
     // This is development url for fetch--comment out for production
-    // const HerokuUrl = "http://localhost:8000";
+    const HerokuUrl = "http://localhost:8000";
     const url = HerokuUrl + "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
-    const stories = '';
+    //const stories = '';
 
      fetch(url)
         .then(response => response.text())
@@ -91,7 +91,7 @@ class Fabia extends Component {
                                                   text={(stories.substring(2,7) === 'happy') ? stories.substring(15) : stories.substring(14)}
                                                  />
                                         }));
-     console.log('stories are ', stories);
+     //console.log('stories are ', stories);
 
     }
 
@@ -106,8 +106,8 @@ class Fabia extends Component {
         <label>
          Choose Main Character:
         <br/>
-        <select name="selected" value={this.state.value} onChange={this.handleSelect}>
-         <option value=""> </option>
+      <select name="selected" value={this.state.value} onBlur={this.handleSelect}>
+         <option></option>
          <option value="Bear">Bear</option>
          <option value="Princess">Princess</option>
          <option value="Witch">Witch</option>
