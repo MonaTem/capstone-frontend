@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import './Fabia.css';
 import VoicePlayer from './VoicePlayer.js';
 import Character from './Character.js';
+//import About from './About.js';
 
 class Fabia extends Component {
   constructor(props) {
@@ -165,6 +167,9 @@ class Fabia extends Component {
        <Character character={character} photo={photo} />
        {this.renderForm()}
        {this.state.voice}
+       <br></br>
+       <br></br>
+       {character === "Fabia" && <Link to={"/About"}>About Fabia</Link>}
       </div>
     );
   }
