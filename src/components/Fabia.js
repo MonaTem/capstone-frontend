@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import './Fabia.css';
 import VoicePlayer from './VoicePlayer.js';
 import Character from './Character.js';
-import About from './About.js';
+//import About from './About.js';
 
 class Fabia extends Component {
   constructor(props) {
@@ -78,9 +78,9 @@ class Fabia extends Component {
     console.log("end: ", end, "characterInd:", characterIndex);
     // const url = "/api/stories/" + characterIndex + "/" + end  This is URL for fake server
     // This is production url for fetch---comment out in development
-    // const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
+    const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
     // This is development url for fetch--comment out for production
-    const HerokuUrl = "http://localhost:8000";
+    // const HerokuUrl = "http://localhost:8000";
     const url = HerokuUrl + "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
     //const stories = '';
@@ -167,12 +167,9 @@ class Fabia extends Component {
        <Character character={character} photo={photo} />
        {this.renderForm()}
        {this.state.voice}
-       <Router>
-         <div>
-            <NavLink to="/About">About Fabia</NavLink>
-            <Route exact path="/About" component={About}/>
-         </div>
-      </Router>
+       <br></br>
+       <br></br>
+       {character === "Fabia" && <Link to={"/About"}>About Fabia</Link>}
       </div>
     );
   }
