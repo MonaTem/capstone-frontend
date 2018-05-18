@@ -27,6 +27,7 @@ const Character = (props) => {
         <div className="Character">
              <img className="img-fluid" src={props.photo} alt={props.character} height="400" width="400"/>
         </div>
+        <p>First time through, please click ending type again.</p>
      </div>
   );
 
