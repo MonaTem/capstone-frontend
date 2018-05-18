@@ -14,6 +14,7 @@ class Fabia extends Component {
       stories: '',
       api: '',
       selected: "Fabia",
+      first: true,
       finish: '',
       id:  7
     }
@@ -58,6 +59,7 @@ class Fabia extends Component {
 
       this.setState({
         [name]: value,
+        first: false,
         dropdownOpen: !this.state.dropdownOpen,
         id: id,
         voice: null
@@ -80,7 +82,7 @@ class Fabia extends Component {
     // This is production url for fetch---comment out in development
     const HerokuUrl = "https://fabias-fairytales-backend.herokuapp.com";
     // This is development url for fetch--comment out for production
-    // const HerokuUrl = "http://localhost:8000";
+    //const HerokuUrl = "http://localhost:8000";
     const url = HerokuUrl + "/api/stories/" + end + "/" + characterIndex;
     console.log("url", url);
     //const stories = '';
