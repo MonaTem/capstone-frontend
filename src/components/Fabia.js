@@ -127,6 +127,7 @@ class Fabia extends Component {
          <button name="ending" value="sad" color="white" onClick={this.handleClick.bind(this, "Sad Ending")}>Sad ending?</button>
        </form>
        <p>Selected: {character} {" "} {ending}</p>
+       <p>First time through, click the ending type twice to render the voice</p>
       </div>
     );
    }
