@@ -28,7 +28,7 @@ const Character = (props) => {
              <img className="img-fluid" src={props.photo} alt={props.character} height="400" width="400"/>
         </div>
         <br></br>
-        <p>First time through, click the ending type twice to render the voice</p>
+      <p>First time through only, click the ending type again on this page to render the voice</p>
      </div>
   );
 
